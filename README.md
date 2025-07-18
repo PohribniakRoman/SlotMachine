@@ -1,5 +1,6 @@
 # Casino Slot Machine
-
+**Live Deployment**
+https://slot-machine-phi-three.vercel.app/slots
 ## Quick Start
 
 ```bash
