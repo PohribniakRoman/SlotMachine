@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Casino Slot Machine
 
-## Getting Started
-
-First, run the development server:
+## Quick Start
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Visit http://localhost:3000/slots
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features Implemented
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Core Gameplay**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 3-reel slot machine with 4 symbols (Cherry, Lemon, Orange, Watermelon)
+- Progressive reward system (10-40 credits based on symbol)
+- Sequential reel animations with 1-2-3 second delays
+- Win/loss detection with visual feedback
 
-## Learn More
+**Game Mechanics**
 
-To learn more about Next.js, take a look at the following resources:
+- Dynamic house edge that increases as player wins more
+- Server-side probability manipulation (0% → 30% → 60% cheat rate)
+- Bank and balance system with cash out functionality
+- Session persistence across browser refreshes
+- Game history tracking with last 5 results
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Technical Features**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Real-time API communication with error handling
+- Form validation using Zod schemas
+- Responsive design for mobile and desktop
+- Loading states and disabled button management
+- Type-safe client-server communication
 
-## Deploy on Vercel
+## Key Challenges Resolved
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Sequential Animation Timing**
+Creating realistic slot machine behavior where reels stop one by one instead of simultaneously. Solved using staggered setTimeout calls with index-based delays.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**State Management Complexity**
+Coordinating between spinning animations, API calls, and game state updates. Used React Query for server state and Zustand for client state with careful effect management.
+
+**House Edge Implementation**
+Implementing server-side cheating logic that feels natural to players. Created a probability system that re-rolls winning combinations based on player's current credit balance.
+
+**Dynamic UI Controls**
+Managing button states across different game phases (spinning, sufficient balance, broke, etc.). Implemented conditional rendering with proper disabled states and visual feedback.
+
+**Type Safety Across Stack**
+Ensuring consistent data types between client and server. Used shared TypeScript interfaces and Zod validation schemas for runtime type checking.
+
+## Best Practices Demonstrated
+
+**Component Architecture**
+
+- Single responsibility components (RollingCell, RollingControls, RollingHistory)
+- Proper component composition and data flow
+- Memo optimization for performance in animation-heavy components
+
+**State Management**
+
+- Separation of server state (React Query) and client state (Zustand)
+- Persistent state with localStorage integration
+- Proper cleanup in useEffect hooks to prevent memory leaks
+
+**API Design**
+
+- RESTful endpoint structure with proper HTTP methods
+- Input validation with meaningful error messages
+- Consistent response format with success/error states
+- Error handling with appropriate status codes
+
+**Styling Organization**
+
+- SCSS with variables and mixins for maintainable styles
+- Component-scoped styling to prevent conflicts
+- Responsive design patterns
+- Smooth animations using CSS transitions
+
+**Type Safety**
+
+- Comprehensive TypeScript interfaces for all data structures
+- Runtime validation using Zod schemas
+- Proper error boundary patterns
+- Type-safe API communication
+
+**Code Quality**
+
+- Clear function and variable naming
+- Proper separation of concerns
+- Consistent code formatting
+- Minimal but effective comments
+
+## Tech Stack
+
+- Frontend: Next.js, TypeScript, React Query, Zustand
+- Backend: Next.js API routes with Zod validation
+- Styling: SCSS with custom variables and mixins
+- Animation: CSS transitions and keyframes
+
+## Development Time
+
+Built in 3.5 hours with focus on core functionality, smooth user experience, and clean code architecture. Prioritized working features over extensive testing or advanced optimizations

@@ -1,0 +1,52 @@
+@mixin gradient-bg($color1, $color2) {
+  background: linear-gradient(145deg, $color1, $color2);
+}
+
+@mixin button-style {
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 20px 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid $primary-gold;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+@mixin hover-lift {
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin cell-base {
+  width: $cell-size;
+  height: $cell-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin symbol-base {
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+}
