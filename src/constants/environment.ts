@@ -1,3 +1,3 @@
 export const ENVIRONMENT = {
-  host: process.env.HOST || "http://localhost:3000",
+  host: "https://slot-machine-phi-three.vercel.app",
 };
